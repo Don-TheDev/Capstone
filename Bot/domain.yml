@@ -19,6 +19,42 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+- mood_angry:
+    use_entities: true
+- mood_tired:
+    use_entities: true
+- mood_lonely:
+    use_entities: true
+- deny_smalltalk:
+    use_entities: true
+- ask_forecast_weather:
+    use_entities: true
+- affirm_smalltalk:
+    use_entities: true
+- greet_smalltalk:
+    use_entities: true
+- mood_happy:
+    use_entities: true
+- mood_bored:
+    use_entities: true
+- Management_Courses:
+    use_entities: true
+- mood_nervous:
+    use_entities: true
+- Literature_Courses:
+    use_entities: true
+- type_weather:
+    use_entities: true
+- goodbyes_smalltalk:
+    use_entities: true
+- temperature_weather:
+    use_entities: true
+- mood_scared:
+    use_entities: true
+- mood_excited:
+    use_entities: true
+- Computer_Science_Courses:
+    use_entities: true
 entities: []
 slots: {}
 responses:
@@ -35,7 +71,6 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions:
-- action_check_weather
+actions: []
 forms: {}
 e2e_actions: []
