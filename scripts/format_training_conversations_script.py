@@ -25,10 +25,12 @@ for tweet in tweetqa:
     story = tweet["qid"]
     user = tweet["Question"]
     bot = tweet["Answer"][0]
+    user = user.replace('"', '\\"')
+    bot = bot.replace('"', '\\"')
     lines.append(f"""  - story: {story}
     steps:
-      - user: '{user}'
-      - bot: '{bot}'\n\n""")
+      - user: "{user}"
+      - bot: "{bot}"\n\n""")
 
 f = open("bot/data/core/tweetqa.yml", "w", encoding="utf-8")
 f.writelines(lines)
