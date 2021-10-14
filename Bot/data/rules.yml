@@ -1,12 +1,42 @@
 version: "2.0"
 
 rules:
-  - rule: Say goodbye anytime the user says goodbye
+  - rule: Say goodbye anytime the user says goodbye 1
     steps:
       - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say goodbye anytime the user says goodbye 2
+    steps:
+      - intent: goodbye_smalltalk
       - action: utter_goodbye
 
   - rule: Say 'I am a bot' anytime the user challenges
     steps:
       - intent: bot_challenge
       - action: utter_iamabot
+
+  - rule: Activate city form
+    condition:
+      - slot_was_set:
+          - city: null
+          - asked_about_weather: true
+    steps:
+      - action: city_form
+      - active_loop: city_form
+
+  - rule: Submit city form
+    condition:
+      # Condition that form is active.
+      - active_loop: city_form
+    steps:
+      # Form is deactivated
+      - action: city_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      # The actions we want to run when the form is submitted.
+      - action: utter_submit_city
+      - action: action_check_weather
+      - action: utter_weather
+      # - action: utter_slots_values

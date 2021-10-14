@@ -1,0 +1,258 @@
+[
+  {
+    "text": "amazing",
+    "intent": "mood_happy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.8401859998703003
+    }
+  },
+  {
+    "text": "I am great",
+    "intent": "mood_happy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.603705644607544
+    }
+  },
+  {
+    "text": "I feel anxious",
+    "intent": "mood_scared",
+    "intent_prediction": {
+      "name": "mood_nervous",
+      "confidence": 0.5861280560493469
+    }
+  },
+  {
+    "text": "I am breaking out in a cold sweat",
+    "intent": "mood_nervous",
+    "intent_prediction": {
+      "name": "mood_scared",
+      "confidence": 0.7619810700416565
+    }
+  },
+  {
+    "text": "hey",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "greet_smalltalk",
+      "confidence": 0.6116695404052734
+    }
+  },
+  {
+    "text": "good afternoon",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.5119422078132629
+    }
+  },
+  {
+    "text": "see you later",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "goodbyes_smalltalk",
+      "confidence": 0.5037960410118103
+    }
+  },
+  {
+    "text": "yes",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "affirm_smalltalk",
+      "confidence": 0.6275601387023926
+    }
+  },
+  {
+    "text": "indeed",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "affirm_smalltalk",
+      "confidence": 0.5158577561378479
+    }
+  },
+  {
+    "text": "correct",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "affirm_smalltalk",
+      "confidence": 0.5734485387802124
+    }
+  },
+  {
+    "text": "I am feeling very good",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_happy",
+      "confidence": 0.6282808780670166
+    }
+  },
+  {
+    "text": "are you a bot?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.6958112716674805
+    }
+  },
+  {
+    "text": "are you a human?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.6499810814857483
+    }
+  },
+  {
+    "text": "am I talking to a bot?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.513945460319519
+    }
+  },
+  {
+    "text": "hi",
+    "intent": "greet_smalltalk",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.692127525806427
+    }
+  },
+  {
+    "text": "hello",
+    "intent": "greet_smalltalk",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.5098637342453003
+    }
+  },
+  {
+    "text": "hey there",
+    "intent": "greet_smalltalk",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.8092902302742004
+    }
+  },
+  {
+    "text": "goodbye",
+    "intent": "goodbyes_smalltalk",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.5117183923721313
+    }
+  },
+  {
+    "text": "bye",
+    "intent": "goodbyes_smalltalk",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.852299153804779
+    }
+  },
+  {
+    "text": "great",
+    "intent": "affirm_smalltalk",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.6136426329612732
+    }
+  },
+  {
+    "text": "perfect",
+    "intent": "affirm_smalltalk",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.5838229060173035
+    }
+  },
+  {
+    "text": "no",
+    "intent": "deny_smalltalk",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.6961739659309387
+    }
+  },
+  {
+    "text": "no way",
+    "intent": "deny_smalltalk",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.5119902491569519
+    }
+  },
+  {
+    "text": "never",
+    "intent": "deny_smalltalk",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.5469791293144226
+    }
+  },
+  {
+    "text": "am I talking to a human?",
+    "intent": "deny_smalltalk",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.5241760015487671
+    }
+  },
+  {
+    "text": "are you a robot?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.7046558856964111
+    }
+  },
+  {
+    "text": "am I talking to an actual person?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.683788537979126
+    }
+  },
+  {
+    "text": "you're a bot aren't you?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.7944808602333069
+    }
+  },
+  {
+    "text": "are you even a real person?",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "deny_smalltalk",
+      "confidence": 0.6569368243217468
+    }
+  },
+  {
+    "text": "pressure",
+    "intent": "type_weather",
+    "intent_prediction": {
+      "name": "temperature_weather",
+      "confidence": 0.8211552500724792
+    }
+  },
+  {
+    "text": "weather",
+    "intent": "type_weather",
+    "intent_prediction": {
+      "name": "temperature_weather",
+      "confidence": 0.5587174296379089
+    }
+  },
+  {
+    "text": "humidity",
+    "intent": "temperature_weather",
+    "intent_prediction": {
+      "name": "type_weather",
+      "confidence": 0.8204907774925232
+    }
+  }
+]

@@ -1,0 +1,866 @@
+version: "2.0"
+nlu:
+- intent: give_city
+  examples: |
+    - it's [riverside](city)
+    - for [Cleveland](city)
+    - i live in [houston](city)
+    - [Salt Lake City](city)
+- intent: Literature_Courses
+  examples: |
+    - Latin Literature
+    - Sanskrit Literature
+    - English Literature
+    - German Literature
+- intent: affirm
+  examples: |
+    - yes
+    - that sounds good
+    - indeed
+    - correct
+    - y
+- intent: goodbyes_smalltalk
+  examples: |
+    - cya
+    - see you later
+    - goodbye
+    - ciao
+    - bye
+- intent: deny
+  examples: |
+    - never
+    - n
+    - don't like that
+    - I don't think so
+    - no way
+    - not really
+- intent: bot_challenge
+  examples: |
+    - am I talking to a human?
+    - you're a bot aren't you?
+    - am I talking to a bot?
+    - are you a robot?
+    - are you a bot?
+    - are you even a real person?
+- intent: Management_Courses
+  examples: |
+    - Human Resource
+    - Banking and Finance
+    - Marketing
+    - Digital Marketing
+    - Business Analytics
+    - Operations
+    - Product Management
+    - Finance
+    - Consulting
+- intent: mood_excited
+  examples: |
+    - I'm very excited
+    - I'm thrilled
+    - How exciting!
+    - This is so fun
+    - I felt excited
+    - I'm really excited
+    - I am excited
+    - I'm damn excited
+    - I'm hyped
+- intent: goodbye
+  examples: |
+    - bye!
+    - cu
+    - bye
+    - see you around
+    - have a nice day
+    - bye bye
+    - goodbye
+    - see you later
+    - good by
+    - cee you later
+- intent: affirm_smalltalk
+  examples: |
+    - sounds good
+    - yes
+    - ok
+    - correct
+    - sounds great
+    - yep
+    - that's right
+    - yeah
+    - indeed
+    - awwwee thanks
+- intent: greet
+  examples: |
+    - hey dude
+    - hey
+    - hey there
+    - good morning
+    - hi
+    - hello there
+    - goodevening
+    - let's go
+    - hello
+    - good evening
+- intent: mood_great
+  examples: |
+    - wonderful
+    - I am feeling very good
+    - amazing
+    - I am great
+    - so good
+    - I am going to save the world
+    - perfect
+    - I am amazing
+    - so so perfect
+    - feeling like a king
+    - so perfect
+- intent: greet_smalltalk
+  examples: |
+    - sup
+    - hello
+    - heyo
+    - wazzup
+    - hi
+    - hello buddy
+    - howdy
+    - yo
+    - what's up
+    - hiya
+    - heya
+- intent: Computer_Science_Courses
+  examples: |
+    - Blockchain
+    - Cyber Security
+    - Data Science
+    - Machine Learning
+    - C++ Programming
+    - Operating System
+    - Artificial Intelligence
+    - Web Development
+    - Android Development
+    - Deep Learning
+    - Java Programming
+    - Java Script
+- intent: deny_smalltalk
+  examples: |
+    - nope
+    - no way
+    - am I talking to a bot?
+    - nah
+    - are you a robot?
+    - am I talking to an actual person?
+    - no thanks
+    - no
+    - never
+    - not true
+    - are you a bot?
+    - are you even a real person?
+- intent: mood_lonely
+  examples: |
+    - I've gotten used to living alone
+    - I live alone
+    - I am a loner
+    - I feel lonely
+    - I'm really lonely
+    - I'm all alone
+    - I think I've been living alone too long
+    - I am used to living alone
+    - I'm alone
+    - I am lonely
+    - am all alone
+    - I'm always alone
+    - I'm so lonely
+    - I am still alone
+    - I don't have anyone else
+    - I don't have any company
+- intent: mood_scared
+  examples: |
+    - I am afraid
+    - I broke out in a cold sweat
+    - I'm fearful
+    - I feel scared
+    - I'm trembling from fear
+    - That is frightening
+    - I feel intimidated
+    - I'm worried
+    - I'm having a bad feeling
+    - That startled me!
+    - I am terrified
+    - I am petrified
+    - I am scared to death
+    - I feel anxious
+    - I'm spooked easily
+    - I am scared
+- intent: mood_bored
+  examples: |
+    - i am very bored
+    - Im kinda bored today
+    - It's very boring
+    - I'm already bored
+    - soo bored
+    - bored
+    - it bores me
+    - that was boring
+    - I've never been more bored
+    - It's boring
+    - We're all bored
+    - I'm bored out of my mind
+    - i had a slow day
+    - boring
+    - I am getting bored
+    - This is boring
+- intent: mood_tired
+  examples: |
+    - I'm very tired
+    - I'm so tired
+    - I was very tired
+    - i am awfully tired
+    - I'm exhausted
+    - i feel tired
+    - I am really tired
+    - i'm dead tired
+    - I'm worn out
+    - I'm getting tired
+    - I am tired
+    - i am kind of so tired
+    - i was tired
+    - I'm completely drained out
+    - I feel tired
+    - I am little tired
+- intent: temperature_weather
+  examples: |
+    - wind chill
+    - weatherman
+    - temperature
+    - thermometer
+    - weather
+    - humidity
+    - degrees Fahrenheit
+    - above zero
+    - usual temperature
+    - degrees
+    - degrees Celsius
+    - average temperature
+    - weather station
+    - windchill
+    - degrees above zero
+    - below zero
+    - below freezing
+    - degrees below zero
+    - atmospheric absolute pressure
+    - temperatures are in the mid
+- intent: mood_happy
+  examples: |
+    - I'm so glad
+    - I'm good
+    - What a great day
+    - I am feeling great
+    - I feel wonderful
+    - I feel great
+    - You are too cool
+    - I'm feeling awesome
+    - Feeling lucky
+    - I am feeling very good
+    - Me, wonderful!
+    - I am happy
+    - Never better
+    - I'm fine
+    - amazing
+    - I am loving it
+    - I am starting to like this
+    - It's perfect
+    - Doing fine
+    - Fantastic day
+    - I am great
+    - I'm inspired
+    - All great here
+- intent: mood_angry
+  examples: |
+    - That is infuriating
+    - I am outraged
+    - I’m annoyed
+    - I could not control my anger
+    - I feel hostile
+    - It's annoying
+    - I'm still angry about that
+    - That's aggravating
+    - Everything vexes me
+    - You bet I'm angry
+    - I’m super annoyed
+    - I’m straight up angry.
+    - I'm pissed off
+    - I am very frustrated
+    - I have no patience today
+    - That is outrageous!
+    - I feel so offended
+    - I am feeling so angry
+    - I'm pissed
+    - U made me angry
+    - I feel very belligerent
+    - I'm enraged
+    - I am so annoyed
+    - I hate doing this
+    - I am angry
+- intent: mood_nervous
+  examples: |
+    - I am breaking out in a cold sweat
+    - I have butterflies in my stomach
+    - I am anxious
+    - This is nerveracking
+    - I am a chronic worrier.
+    - I'm tensed
+    - I feel constant tension
+    - I cannot concentrate due to the whole number of worries that are bothering me
+    - I am alarmed
+    - I feel uneasy
+    - I feel anxious
+    - This is nerve racking
+    - I am nervous
+    - I am stressed out
+    - This is nerve wracking
+    - I am on edge
+    - I find myself worrying about every little detail
+    - I feel nervous
+    - There's been quite a few changes in my life. I don't think I am handling them well. It's quite stressful.
+    - I’ve been feeling rather anxious lately.
+    - I'm quite tensed.
+    - I'm under a lot of stress
+    - I cannot concentrate as I'm worried constantly
+    - I am tongue tied
+    - I am jumping out of my skin
+    - I’m suffering from anxiety.
+    - I have a lump in my throat
+    - I am like a cat on hot bricks
+    - I'm stressed
+    - I’m feeling rather restless and a horde of worries is bothering me
+    - I’m anxious.
+    - My anxiety is rather through the roof these days.
+    - I am very tense
+    - I feel like I am going to throw up
+    - I am a bundle of nerves
+- intent: ask_forecast_weather
+  examples: |
+    - Is it expected to snow?
+    - How humid is it going to get today?
+    - Lovely day, huh?
+    - What is the weather forecast saying?
+    - What’s it like out there?
+    - It is so cloudy today, isn’t it?
+    - What is the weather expected to be like?
+    - How cold is it going to get today?
+    - So, what will the weather be like today?
+    - Is it warm or cold?
+    - It is so sunny today, isn’t it?
+    - What's the humidity level right now?
+    - What’s it like out?
+    - How humid is it going to be tomorrow?
+    - How's the weather out in the country today?
+    - Is it snowing outside?
+    - How rainy is it going to be tomorrow?
+    - How cold is it going to be tomorrow?
+    - What’s the weather like?
+    - Is it expected to rain?
+    - What is the humidity level right now?
+    - What’s the weather forecast?
+    - Are the roads flooded today?
+    - Nice weather today, isn’t it?
+    - What’s the temperature like?
+    - I wonder if there will be a storm?
+    - What temperature do you think it is?
+    - Do I need to carry an umbrella tomorrow?
+    - Terrible weather, isn’t it?
+    - How’s the weather?
+    - Anybody notice the weather today?
+    - What's the weather like today?
+    - What is the temperature?
+    - The forecast?
+    - How is the weather today?
+    - What’s the temperature?
+    - What is the weather forecast today?
+    - How hot is it going to get today?
+    - Is there much flooding on the roads today?
+    - What’s the temperature like out there?
+    - Tell me, what is the weather like today?
+    - What is the temperature outside?
+    - What do you think the weather looks like?
+    - Do I need to carry an umbrella today?
+    - How hot is it going to be tomorrow?
+- intent: mood_unhappy
+  examples: |
+    - This is bad
+    - I'm feeling very sad
+    - life is boring
+    - I'm uneasy
+    - I'm so sad
+    - Feels horrible
+    - Not good
+    - my day was horrible
+    - I am going through a rather rough time
+    - I'm not good
+    - extremly sad
+    - very bad
+    - heavy
+    - Actually I'm not fine
+    - I feel bored
+    - that sucks
+    - Im not okay
+    - super sad
+    - This feels bad
+    - extremely sad
+    - awful
+    - I am feeling quite lost
+    - I'm awful
+    - I am feeling empty
+    - I feel useless
+    - I'm feeling sad
+    - Im feeling down
+    - not very good
+    - How irritating it is
+    - Am irritated
+    - Im feeling low
+    - aweful
+    - I am ill
+    - so sad
+    - I am not feeling well
+    - I don't feel very well
+    - I am disappointed
+    - so saad
+    - I am all low today
+    - unhappy
+    - terrible
+    - Im feeling sad
+    - This is depressing
+    - very sad
+    - Worst day ever!
+    - I am sick
+    - This sucks!
+    - I feel low
+- intent: type_weather
+  examples: |
+    - dense clouds
+    - sultry
+    - strong wind
+    - freezing rain
+    - drizzle
+    - thundershowers
+    - shower
+    - misty
+    - wind
+    - rainy
+    - clear sky
+    - snowfall
+    - partly sunny
+    - typhoon
+    - cold wind
+    - moderate wind
+    - cold
+    - air
+    - freezing
+    - humid
+    - fog
+    - tornado
+    - breezy
+    - foggy
+    - showers
+    - blizzard
+    - dry
+    - partly cloudy
+    - hail
+    - snow
+    - humidity
+    - to pour
+    - sunny
+    - dull
+    - cloud
+    - thunder
+    - thunderstorms
+    - flooded roads
+    - windy
+    - mist
+    - sticky
+    - heavy winds
+    - thunder-cloud
+    - squall
+    - rain and snow
+    - precipitation
+    - freeze
+    - gusty
+    - gale
+    - forecast
+    - sunshine
+    - weather
+    - cool
+    - raindrop
+    - thunderstorm
+    - snowstorm
+    - hailing
+    - sun
+    - cloudy
+    - hailstorm
+    - rain showers
+    - tornadoes
+    - lightning
+    - damp
+    - frost
+    - slight wind
+    - hazy
+    - frosty
+    - twister
+    - star
+    - downpour
+    - pressure
+    - heat
+    - clear skies
+    - wet
+    - blinding snowstorm
+    - warm
+    - puff of wind
+    - icy
+    - cyclone
+    - sleet
+    - windstorm
+    - monsoon
+    - black clouds
+    - hailstone
+    - sandstorms
+    - heat wave
+    - muggy
+    - whirlwind
+    - chilly
+    - sky
+    - flooded
+    - it lightens
+    - breath of air
+    - shine
+    - cold biting wind
+    - breeze
+    - snowdrift
+    - snowing
+    - rain
+- lookup: city
+  examples: |
+    - New York
+    - Los Angeles
+    - Chicago
+    - Houston
+    - Phoenix
+    - Philadelphia
+    - San Antonio
+    - San Diego
+    - Dallas
+    - San Jose
+    - Austin
+    - Jacksonville
+    - Fort Worth
+    - Columbus
+    - Indianapolis
+    - Charlotte
+    - San Francisco
+    - Seattle
+    - Denver
+    - Washington
+    - Nashville
+    - Oklahoma City
+    - El Paso
+    - Boston
+    - Portland
+    - Las Vegas
+    - Detroit
+    - Memphis
+    - Louisville
+    - Baltimore
+    - Milwaukee
+    - Albuquerque
+    - Tucson
+    - Fresno
+    - Sacramento
+    - Kansas City
+    - Mesa
+    - Atlanta
+    - Omaha
+    - Colorado Springs
+    - Raleigh
+    - Long Beach
+    - Virginia Beach
+    - Miami
+    - Oakland
+    - Minneapolis
+    - Tulsa
+    - Bakersfield
+    - Wichita
+    - Arlington
+    - Aurora
+    - Tampa
+    - New Orleans
+    - Cleveland
+    - Honolulu
+    - Anaheim
+    - Lexington
+    - Stockton
+    - Corpus Christi
+    - Henderson
+    - Riverside
+    - Newark
+    - Saint Paul
+    - Santa Ana
+    - Cincinnati
+    - Irvine
+    - Orlando
+    - Pittsburgh
+    - St. Louis
+    - Greensboro
+    - Jersey City
+    - Anchorage
+    - Lincoln
+    - Plano
+    - Durham
+    - Buffalo
+    - Chandler
+    - Chula Vista
+    - Toledo
+    - Madison
+    - Gilbert
+    - Reno
+    - Fort Wayne
+    - North Las Vegas
+    - St. Petersburg
+    - Lubbock
+    - Irving
+    - Laredo
+    - Winston�Salem
+    - Chesapeake
+    - Glendale
+    - Garland
+    - Scottsdale
+    - Norfolk
+    - Boise
+    - Fremont
+    - Spokane
+    - Santa Clarita
+    - Baton Rouge
+    - Richmond
+    - Hialeah
+    - San Bernardino
+    - Tacoma
+    - Modesto
+    - Huntsville
+    - Des Moines
+    - Yonkers
+    - Rochester
+    - Moreno Valley
+    - Fayetteville
+    - Fontana
+    - Columbus
+    - Worcester
+    - Port St. Lucie
+    - Little Rock
+    - Augusta
+    - Oxnard
+    - Birmingham
+    - Montgomery
+    - Frisco
+    - Amarillo
+    - Salt Lake City
+    - Grand Rapids
+    - Huntington Beach
+    - Overland Park
+    - Glendale
+    - Tallahassee
+    - Grand Prairie
+    - McKinney
+    - Cape Coral
+    - Sioux Falls
+    - Peoria
+    - Providence
+    - Vancouver
+    - Knoxville
+    - Akron
+    - Shreveport
+    - Mobile
+    - Brownsville
+    - Newport News
+    - Fort Lauderdale
+    - Chattanooga
+    - Tempe
+    - Aurora
+    - Santa Rosa
+    - Eugene
+    - Elk Grove
+    - Salem
+    - Ontario
+    - Cary
+    - Rancho Cucamonga
+    - Oceanside
+    - Lancaster
+    - Garden Grove
+    - Pembroke Pines
+    - Fort Collins
+    - Palmdale
+    - Springfield
+    - Clarksville
+    - Salinas
+    - Hayward
+    - Paterson
+    - Alexandria
+    - Macon
+    - Corona
+    - Kansas City
+    - Lakewood
+    - Springfield
+    - Sunnyvale
+    - Jackson
+    - Killeen
+    - Hollywood
+    - Murfreesboro
+    - Pasadena
+    - Bellevue
+    - Pomona
+    - Escondido
+    - Joliet
+    - Charleston
+    - Mesquite
+    - Naperville
+    - Rockford
+    - Bridgeport
+    - Syracuse
+    - Savannah
+    - Roseville
+    - Torrance
+    - Fullerton
+    - Surprise
+    - McAllen
+    - Thornton
+    - Visalia
+    - Olathe
+    - Gainesville
+    - West Valley City
+    - Orange
+    - Denton
+    - Warren
+    - Pasadena
+    - Waco
+    - Cedar Rapids
+    - Dayton
+    - Elizabeth
+    - Hampton
+    - Columbia
+    - Kent
+    - Stamford
+    - Lakewood
+    - Victorville
+    - Miramar
+    - Coral Springs
+    - Sterling Heights
+    - New Haven
+    - Carrollton
+    - Midland
+    - Norman
+    - Santa Clara
+    - Athens
+    - Thousand Oaks
+    - Topeka
+    - Simi Valley
+    - Columbia
+    - Vallejo
+    - Fargo
+    - Allentown
+    - Pearland
+    - Concord
+    - Abilene
+    - Arvada
+    - Berkeley
+    - Ann Arbor
+    - Independence
+    - Rochester
+    - Lafayette
+    - Hartford
+    - College Station
+    - Clovis
+    - Fairfield
+    - Palm Bay
+    - Richardson
+    - Round Rock
+    - Cambridge
+    - Meridian
+    - West Palm Beach
+    - Evansville
+    - Clearwater
+    - Billings
+    - West Jordan
+    - Richmond
+    - Westminster
+    - Manchester
+    - Lowell
+    - Wilmington
+    - Antioch
+    - Beaumont
+    - Provo
+    - North Charleston
+    - Elgin
+    - Carlsbad
+    - Odessa
+    - Waterbury
+    - Springfield
+    - League City
+    - Downey
+    - Gresham
+    - High Point
+    - Broken Arrow
+    - Peoria
+    - Lansing
+    - Lakeland
+    - Pompano Beach
+    - Costa Mesa
+    - Pueblo
+    - Lewisville
+    - Miami Gardens
+    - Las Cruces
+    - Sugar Land
+    - Murrieta
+    - Ventura
+    - Everett
+    - Temecula
+    - Dearborn
+    - Santa Maria
+    - West Covina
+    - El Monte
+    - Greeley
+    - Sparks
+    - Centennial
+    - Boulder
+    - Sandy Springs
+    - Inglewood
+    - Edison
+    - South Fulton
+    - Green Bay
+    - Burbank
+    - Renton
+    - Hillsboro
+    - El Cajon
+    - Tyler
+    - Davie
+    - San Mateo
+    - Brockton
+    - Concord
+    - Jurupa Valley
+    - Daly City
+    - Allen
+    - Rio Rancho
+    - Rialto
+    - Woodbridge
+    - South Bend
+    - Spokane Valley
+    - Norwalk
+    - Menifee
+    - Vacaville
+    - Wichita Falls
+    - Davenport
+    - Quincy
+    - Chico
+    - Lynn
+    - Lee's Summit
+    - New Bedford
+    - Federal Way
+    - Clinton
+    - Edinburg
+    - Nampa
+    - Roanoke

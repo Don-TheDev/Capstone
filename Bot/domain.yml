@@ -1,65 +1,74 @@
 version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- mood_great:
-    use_entities: true
-- mood_unhappy:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- mood_angry:
-    use_entities: true
-- mood_tired:
-    use_entities: true
-- mood_lonely:
-    use_entities: true
-- deny_smalltalk:
-    use_entities: true
-- ask_forecast_weather:
-    use_entities: true
-- affirm_smalltalk:
-    use_entities: true
-- greet_smalltalk:
-    use_entities: true
-- mood_happy:
-    use_entities: true
-- mood_bored:
-    use_entities: true
-- Management_Courses:
-    use_entities: true
-- mood_nervous:
-    use_entities: true
-- Literature_Courses:
-    use_entities: true
-- type_weather:
-    use_entities: true
-- goodbyes_smalltalk:
-    use_entities: true
-- temperature_weather:
-    use_entities: true
-- mood_scared:
-    use_entities: true
-- mood_excited:
-    use_entities: true
-- Computer_Science_Courses:
-    use_entities: true
-entities: []
-slots: {}
+- ask_forecast_weather
+- give_city
+- affirm_smalltalk
+- greet_smalltalk
+- goodbye
+- mood_unhappy
+- close
+- greet
+- affirm
+- deny
+- mood_great
+- bot_challenge
+- mood_angry
+- mood_tired
+- mood_lonely
+- deny_smalltalk
+- goodbye_smalltalk
+- mood_happy
+- mood_bored
+- Management_Courses
+- mood_nervous
+- Literature_Courses
+- type_weather
+- goodbyes_smalltalk
+- temperature_weather
+- mood_scared
+- mood_excited
+- Computer_Science_Courses
+entities:
+- city
+slots:
+  city:
+    type: text
+    influence_conversation: true
+  city_is_known:
+    type: bool
+    influence_conversation: true
+  weather:
+    type: text
+    influence_conversation: true
+  temp:
+    type: text
+    influence_conversation: true
+  temp_min:
+    type: text
+    influence_conversation: true
+  temp_max:
+    type: text
+    influence_conversation: true
+  humidity:
+    type: text
+    influence_conversation: true
+  wind_speed:
+    type: text
+    influence_conversation: true
+  asked_about_weather:
+    type: bool
+    influence_conversation: true
+  requested_slot:
+    type: unfeaturized
+    influence_conversation: false
 responses:
   utter_greet:
   - text: Hey! How are you?
+  - text: What's up?
+  - text: Yo!
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -67,10 +76,42 @@ responses:
   - text: Did that help you?
   utter_happy:
   - text: Great, carry on!
+  - text: Yay!
+  - text: Glad I could help!
   utter_goodbye:
-  - text: Bye
+  - text: Bye.
+  - text: See ya!
+  - text: Ciao!
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
-forms: {}
-e2e_actions: []
+  utter_ask_city:
+  - text: What city are you in?
+  utter_weather:
+  - text: The forecast for {city} is {weather} with a temperature of {temp}F, low and high of {temp_min}F/{temp_max}F, a humidity of {humidity}%, and wind speeds of {wind_speed}MPH.
+  utter_submit_city:
+  - text: Your city is {city}.
+  utter_affirm:
+  - text: Yes.
+  - text: Alright.
+  - text: Okay.
+  - text: Gotcha.
+  utter_prompt_for_more:
+  - text: Is there anything else?
+  - text: What else can I help you with?
+  - text: Something else on your mind?
+actions:
+- action_check_weather
+- action_set_asked_about_weather
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_submit_city
+- utter_weather
+forms:
+  city_form:
+    required_slots:
+      city:
+      - entity: city
+        type: from_entity

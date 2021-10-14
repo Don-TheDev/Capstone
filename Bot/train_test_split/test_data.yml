@@ -1,0 +1,504 @@
+version: "2.0"
+nlu:
+- intent: give_city
+  examples: |
+    - i live in [New York](city)
+- intent: Literature_Courses
+  examples: |
+    - Hindi Literature
+    - French Literature
+- intent: affirm
+  examples: |
+    - of course
+- intent: goodbyes_smalltalk
+  examples: |
+    - talk to you later
+- intent: deny
+  examples: |
+    - no
+- intent: bot_challenge
+  examples: |
+    - am I talking to an actual person?
+    - are you a human?
+- intent: Management_Courses
+  examples: |
+    - Policy Making
+    - Project Management
+- intent: mood_excited
+  examples: |
+    - It was exciting
+    - I can't begin to say how excited I am
+    - That was exciting
+- intent: goodbye
+  examples: |
+    - good night
+    - good afternoon
+- intent: affirm_smalltalk
+  examples: |
+    - great
+    - perfect
+- intent: greet
+  examples: |
+    - goodmorning
+    - moin
+    - good afternoon
+- intent: mood_great
+  examples: |
+    - extremely good
+    - super stoked
+    - great
+- intent: greet_smalltalk
+  examples: |
+    - hey
+    - hey there
+    - hihi
+- intent: Computer_Science_Courses
+  examples: |
+    - HTML / CSS
+    - Python Programming
+    - Networking
+- intent: deny_smalltalk
+  examples: |
+    - are you a human?
+    - am I talking to a human?
+    - you're a bot aren't you?
+- intent: mood_lonely
+  examples: |
+    - I have no one to talk to
+    - I'm very lonely
+    - I am feeling lonely
+- intent: mood_scared
+  examples: |
+    - I'm horrified
+    - I panicked
+    - I shrank back in fear
+    - That is intimidating
+- intent: mood_bored
+  examples: |
+    - I was bored
+    - very boring
+    - Staying at home is boring
+    - I'm bored
+- intent: mood_tired
+  examples: |
+    - I grow weary
+    - I'm drained
+    - I'm a bit tires
+    - I've overworked
+- intent: temperature_weather
+  examples: |
+    - barometer
+    - weather forecast
+    - pressure
+    - synoptic
+    - mercury
+    - degrees centigrade
+- intent: mood_happy
+  examples: |
+    - I'm just really happy right now
+    - I had a great day
+    - Today is an awesome day!
+    - I'm feeling happy
+    - I am amazed
+- intent: mood_angry
+  examples: |
+    - I am full of fury
+    - I'm furious
+    - I’m so mad.
+    - It is irritating me
+    - This is maddening!
+    - I'm very mad
+    - That made me angry
+- intent: mood_nervous
+  examples: |
+    - This is nervewracking
+    - I am afraid of my own shadow
+    - I'm constantly worried
+    - I am troubled
+    - It's been a rough couple of days. VERY stressful
+    - I’m feeling rather restless
+    - I'm under immense stress
+    - I am at my wits' end
+- intent: ask_forecast_weather
+  examples: |
+    - hows the weather
+    - What's the forecast?
+    - What is the weather today?
+    - How rainy is it going to be today?
+    - Will the weather keep up?
+    - Awful weather, isn’t it?
+    - Is it cold outside?
+    - What's the forecast like?
+    - Is it windy out?
+    - Do you know the weather forecast for today?
+    - What’s the temperature today?
+- intent: mood_unhappy
+  examples: |
+    - I'm grieving
+    - sad
+    - Everything is bad today
+    - bad
+    - I am depressed
+    - I am feeling too bad
+    - I am sad
+    - not good
+    - Its dissapointing
+    - I feel very sad
+    - I am as lonely as can be
+    - I am feeling bored
+    - depressed
+- intent: type_weather
+  examples: |
+    - hot
+    - stormy
+    - fresh
+    - very strong wind
+    - heavy grey clouds
+    - storm
+    - clear
+    - dust storm
+    - rainfall
+    - it rains cats and dogs
+    - dark
+    - dark clouds
+    - it thunders
+    - hurricane
+    - gust of wind
+    - dew
+    - raining
+    - bright
+    - scattered showers
+    - moon
+    - snowy
+    - overcast
+    - sunny intervals
+    - snowflake
+    - smoggy
+- lookup: city
+  examples: |
+    - New York
+    - Los Angeles
+    - Chicago
+    - Houston
+    - Phoenix
+    - Philadelphia
+    - San Antonio
+    - San Diego
+    - Dallas
+    - San Jose
+    - Austin
+    - Jacksonville
+    - Fort Worth
+    - Columbus
+    - Indianapolis
+    - Charlotte
+    - San Francisco
+    - Seattle
+    - Denver
+    - Washington
+    - Nashville
+    - Oklahoma City
+    - El Paso
+    - Boston
+    - Portland
+    - Las Vegas
+    - Detroit
+    - Memphis
+    - Louisville
+    - Baltimore
+    - Milwaukee
+    - Albuquerque
+    - Tucson
+    - Fresno
+    - Sacramento
+    - Kansas City
+    - Mesa
+    - Atlanta
+    - Omaha
+    - Colorado Springs
+    - Raleigh
+    - Long Beach
+    - Virginia Beach
+    - Miami
+    - Oakland
+    - Minneapolis
+    - Tulsa
+    - Bakersfield
+    - Wichita
+    - Arlington
+    - Aurora
+    - Tampa
+    - New Orleans
+    - Cleveland
+    - Honolulu
+    - Anaheim
+    - Lexington
+    - Stockton
+    - Corpus Christi
+    - Henderson
+    - Riverside
+    - Newark
+    - Saint Paul
+    - Santa Ana
+    - Cincinnati
+    - Irvine
+    - Orlando
+    - Pittsburgh
+    - St. Louis
+    - Greensboro
+    - Jersey City
+    - Anchorage
+    - Lincoln
+    - Plano
+    - Durham
+    - Buffalo
+    - Chandler
+    - Chula Vista
+    - Toledo
+    - Madison
+    - Gilbert
+    - Reno
+    - Fort Wayne
+    - North Las Vegas
+    - St. Petersburg
+    - Lubbock
+    - Irving
+    - Laredo
+    - Winston�Salem
+    - Chesapeake
+    - Glendale
+    - Garland
+    - Scottsdale
+    - Norfolk
+    - Boise
+    - Fremont
+    - Spokane
+    - Santa Clarita
+    - Baton Rouge
+    - Richmond
+    - Hialeah
+    - San Bernardino
+    - Tacoma
+    - Modesto
+    - Huntsville
+    - Des Moines
+    - Yonkers
+    - Rochester
+    - Moreno Valley
+    - Fayetteville
+    - Fontana
+    - Columbus
+    - Worcester
+    - Port St. Lucie
+    - Little Rock
+    - Augusta
+    - Oxnard
+    - Birmingham
+    - Montgomery
+    - Frisco
+    - Amarillo
+    - Salt Lake City
+    - Grand Rapids
+    - Huntington Beach
+    - Overland Park
+    - Glendale
+    - Tallahassee
+    - Grand Prairie
+    - McKinney
+    - Cape Coral
+    - Sioux Falls
+    - Peoria
+    - Providence
+    - Vancouver
+    - Knoxville
+    - Akron
+    - Shreveport
+    - Mobile
+    - Brownsville
+    - Newport News
+    - Fort Lauderdale
+    - Chattanooga
+    - Tempe
+    - Aurora
+    - Santa Rosa
+    - Eugene
+    - Elk Grove
+    - Salem
+    - Ontario
+    - Cary
+    - Rancho Cucamonga
+    - Oceanside
+    - Lancaster
+    - Garden Grove
+    - Pembroke Pines
+    - Fort Collins
+    - Palmdale
+    - Springfield
+    - Clarksville
+    - Salinas
+    - Hayward
+    - Paterson
+    - Alexandria
+    - Macon
+    - Corona
+    - Kansas City
+    - Lakewood
+    - Springfield
+    - Sunnyvale
+    - Jackson
+    - Killeen
+    - Hollywood
+    - Murfreesboro
+    - Pasadena
+    - Bellevue
+    - Pomona
+    - Escondido
+    - Joliet
+    - Charleston
+    - Mesquite
+    - Naperville
+    - Rockford
+    - Bridgeport
+    - Syracuse
+    - Savannah
+    - Roseville
+    - Torrance
+    - Fullerton
+    - Surprise
+    - McAllen
+    - Thornton
+    - Visalia
+    - Olathe
+    - Gainesville
+    - West Valley City
+    - Orange
+    - Denton
+    - Warren
+    - Pasadena
+    - Waco
+    - Cedar Rapids
+    - Dayton
+    - Elizabeth
+    - Hampton
+    - Columbia
+    - Kent
+    - Stamford
+    - Lakewood
+    - Victorville
+    - Miramar
+    - Coral Springs
+    - Sterling Heights
+    - New Haven
+    - Carrollton
+    - Midland
+    - Norman
+    - Santa Clara
+    - Athens
+    - Thousand Oaks
+    - Topeka
+    - Simi Valley
+    - Columbia
+    - Vallejo
+    - Fargo
+    - Allentown
+    - Pearland
+    - Concord
+    - Abilene
+    - Arvada
+    - Berkeley
+    - Ann Arbor
+    - Independence
+    - Rochester
+    - Lafayette
+    - Hartford
+    - College Station
+    - Clovis
+    - Fairfield
+    - Palm Bay
+    - Richardson
+    - Round Rock
+    - Cambridge
+    - Meridian
+    - West Palm Beach
+    - Evansville
+    - Clearwater
+    - Billings
+    - West Jordan
+    - Richmond
+    - Westminster
+    - Manchester
+    - Lowell
+    - Wilmington
+    - Antioch
+    - Beaumont
+    - Provo
+    - North Charleston
+    - Elgin
+    - Carlsbad
+    - Odessa
+    - Waterbury
+    - Springfield
+    - League City
+    - Downey
+    - Gresham
+    - High Point
+    - Broken Arrow
+    - Peoria
+    - Lansing
+    - Lakeland
+    - Pompano Beach
+    - Costa Mesa
+    - Pueblo
+    - Lewisville
+    - Miami Gardens
+    - Las Cruces
+    - Sugar Land
+    - Murrieta
+    - Ventura
+    - Everett
+    - Temecula
+    - Dearborn
+    - Santa Maria
+    - West Covina
+    - El Monte
+    - Greeley
+    - Sparks
+    - Centennial
+    - Boulder
+    - Sandy Springs
+    - Inglewood
+    - Edison
+    - South Fulton
+    - Green Bay
+    - Burbank
+    - Renton
+    - Hillsboro
+    - El Cajon
+    - Tyler
+    - Davie
+    - San Mateo
+    - Brockton
+    - Concord
+    - Jurupa Valley
+    - Daly City
+    - Allen
+    - Rio Rancho
+    - Rialto
+    - Woodbridge
+    - South Bend
+    - Spokane Valley
+    - Norwalk
+    - Menifee
+    - Vacaville
+    - Wichita Falls
+    - Davenport
+    - Quincy
+    - Chico
+    - Lynn
+    - Lee's Summit
+    - New Bedford
+    - Federal Way
+    - Clinton
+    - Edinburg
+    - Nampa
+    - Roanoke
