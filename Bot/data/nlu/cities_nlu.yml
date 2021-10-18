@@ -1,0 +1,10 @@
+version: "2.0"
+nlu:
+  - intent: give_city
+    examples: |
+      - i live in [New York](city)
+      - i live in [houston](city)
+      - i live in [New York](city)
+      - it's [riverside](city)
+      - for [Cleveland](city)
+      - [Salt Lake City](city)

@@ -1,38 +1,39 @@
-version: '2.0'
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- ask_forecast_weather
-- give_city
-- affirm_smalltalk
-- greet_smalltalk
-- goodbye
-- mood_unhappy
-- close
-- greet
-- affirm
-- deny
-- mood_great
-- bot_challenge
-- mood_angry
-- mood_tired
-- mood_lonely
-- deny_smalltalk
-- goodbye_smalltalk
-- mood_happy
-- mood_bored
-- Management_Courses
-- mood_nervous
-- Literature_Courses
-- type_weather
-- goodbyes_smalltalk
-- temperature_weather
-- mood_scared
-- mood_excited
-- Computer_Science_Courses
+  - ask_forecast_weather
+  - give_city
+  - affirm_smalltalk
+  - greet_smalltalk
+  - goodbye
+  - mood_unhappy
+  - close
+  - greet
+  - affirm
+  - deny
+  - mood_great
+  - bot_challenge
+  - mood_angry
+  - mood_tired
+  - mood_lonely
+  - deny_smalltalk
+  - goodbye_smalltalk
+  - mood_happy
+  - mood_bored
+  - Management_Courses
+  - mood_nervous
+  - Literature_Courses
+  - type_weather
+  - goodbyes_smalltalk
+  - temperature_weather
+  - mood_scared
+  - mood_excited
+  - Computer_Science_Courses
+  - ask_about_smalltalk
 entities:
-- city
+  - city
 slots:
   city:
     type: text
@@ -66,52 +67,95 @@ slots:
     influence_conversation: false
 responses:
   utter_greet:
-  - text: Hey! How are you?
-  - text: What's up?
-  - text: Yo!
+    - text: Hey!
+    - text: Yo!
+    - text: Hi
+    - text: Hello
+    - text: howdy
+    - text: hey
+    - text: heya
+    - text: hihi
+    - text: sup
+    - text: Hey there
+    - text: Hello buddy
+    - text: yo
+  utter_ask_about:
+    - text: How are you?
+    - text: What's up?
+    - text: wazzup
+  utter_am_happy:
+    - text: I am happy
+    - text: I feel great
+    - text: I'm fine
+    - text: I had a great day
+    - text: Me, wonderful!
+    - text: I am amazed
+    - text: You are too cool
+    - text: I am loving it
+    - text: I am starting to like this
+    - text: I am feeling great
+    - text: Doing fine
+    - text: Never better
+    - text: Feeling lucky
+    - text: All great here
+    - text: Fantastic day
+    - text: What a great day
+    - text: I'm inspired
+    - text: It's perfect
+    - text: amazing
+    - text: I feel wonderful
+    - text: I am feeling very good
+    - text: I am great
+    - text: I'm good
+    - text: I'm feeling awesome
+    - text: I'm feeling happy
+    - text: Today is an awesome day!
+    - text: I'm so glad
+    - text: I'm just really happy right now
   utter_cheer_up:
-  - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Here is something to cheer you up:'
+    - image: https://i.imgur.com/nGF1K8f.jpg
+      text: "Here is something to cheer you up:"
   utter_did_that_help:
-  - text: Did that help you?
+    - text: Did that help you?
   utter_happy:
-  - text: Great, carry on!
-  - text: Yay!
-  - text: Glad I could help!
+    - text: Great!
+    - text: Yay!
+    - text: Glad I could help!
   utter_goodbye:
-  - text: Bye.
-  - text: See ya!
-  - text: Ciao!
+    - text: Bye.
+    - text: See ya!
+    - text: Ciao!
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+    - text: I am a bot, powered by Rasa.
   utter_ask_city:
-  - text: What city are you in?
+    - text: What city are you in?
   utter_weather:
-  - text: The forecast for {city} is {weather} with a temperature of {temp}F, low and high of {temp_min}F/{temp_max}F, a humidity of {humidity}%, and wind speeds of {wind_speed}MPH.
+    - text: The forecast for {city} is {weather} with a temperature of {temp}F, low and high of {temp_min}F/{temp_max}F, a humidity of {humidity}%, and wind speeds of {wind_speed}MPH.
   utter_submit_city:
-  - text: Your city is {city}.
+    - text: Your city is {city}.
   utter_affirm:
-  - text: Yes.
-  - text: Alright.
-  - text: Okay.
-  - text: Gotcha.
+    - text: Yes.
+    - text: Alright.
+    - text: Okay.
+    - text: Gotcha.
   utter_prompt_for_more:
-  - text: Is there anything else?
-  - text: What else can I help you with?
-  - text: Something else on your mind?
+    - text: Is there anything else?
+    - text: What else can I help you with?
+    - text: Something else on your mind?
 actions:
-- action_check_weather
-- action_set_asked_about_weather
-- utter_cheer_up
-- utter_did_that_help
-- utter_goodbye
-- utter_greet
-- utter_happy
-- utter_submit_city
-- utter_weather
+  - action_check_weather
+  - action_set_asked_about_weather
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_goodbye
+  - utter_greet
+  - utter_happy
+  - utter_submit_city
+  - utter_weather
+  - utter_am_happy
 forms:
   city_form:
     required_slots:
       city:
-      - entity: city
-        type: from_entity
+        - entity: city
+          type: from_entity
