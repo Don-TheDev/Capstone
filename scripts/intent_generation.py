@@ -31,7 +31,7 @@ nlp = spacy.load("en_core_web_sm")
 # We donwload the Quora Duplicate Questions Dataset (https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs)
 # and find similar question in it
 url = "http://qim.fs.quoracdn.net/quora_duplicate_questions.tsv"
-dataset_path = "quora_duplicate_questions.tsv"
+dataset_path = "datasets/quora_duplicate_questions.tsv"
 max_corpus_size = 20000  # We limit our corpus to only the first 50k questions
 
 
@@ -64,7 +64,7 @@ start_time = time.time()
 # min_cluster_size: Only consider cluster that have at least 25 elements
 # threshold: Consider sentence pairs with a cosine-similarity larger than threshold as similar
 clustersIds = util.community_detection(
-    corpus_embeddings, min_community_size=25, threshold=0.75)
+    corpus_embeddings, min_community_size=10, threshold=0.9)
 
 print("Clustering done after {:.2f} sec".format(time.time() - start_time))
 
@@ -73,6 +73,7 @@ for i, clusterId in enumerate(clustersIds):
     clusters.append([])
     for sentence_id in clusterId:
         clusters[i].append(corpus_sentences[sentence_id])
+
 
 for cluster in clusters:
     doc = nlp('\n'.join(cluster))
