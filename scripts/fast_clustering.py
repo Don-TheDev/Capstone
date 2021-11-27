@@ -23,7 +23,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 # We donwload the Quora Duplicate Questions Dataset (https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs)
 # and find similar question in it
 url = "http://qim.fs.quoracdn.net/quora_duplicate_questions.tsv"
-dataset_path = "datasets/quora_duplicate_questions.tsv"
+dataset_path = "quora_duplicate_questions.tsv"
 max_corpus_size = 20000  # We limit our corpus to only the first 50k questions
 
 
@@ -68,7 +68,3 @@ for i, cluster in enumerate(clusters):
     print("\t", "...")
     for sentence_id in cluster[-3:]:
         print("\t", corpus_sentences[sentence_id])
-
-
-# for sentence_id in clusters[2]:
-#     print("\t", corpus_sentences[sentence_id])
