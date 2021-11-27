@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ botname }} Main Menu</title>
+</head>
+<body>
+    <h1>Main Menu</h1>
+    <!-- {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if not server_is_running %}<a href="{% url 'bot:start_server' %}">Start Server</a>{% endif %}
+    {% if server_is_running %}<br/><a href="{% url 'bot:rest' %}">Rest Channel</a>{% endif %}
+    {% if server_is_running %}<br/><a href="{% url 'bot:stop_server' %}">Stop Server</a>{% endif %}
+    {% if not server_is_running %}<br/><a href="{% url 'bot:options' %}">Options</a>{% endif %} -->
+    {% if not server_is_running %}<br/><a href="{% url 'bot:completions' %}">Completions</a>{% endif %}
+    {% if not server_is_running %}<br/><a href="{% url 'bot:gpt_options' %}">GPT Options</a>{% endif %}
+    {% if server_is_running %}
+        <div id="rasa-chat-widget" data-websocket-url="http://localhost:5005/socket.io"></div>
+        <script src="https://unpkg.com/@rasahq/rasa-chat" type="application/javascript"></script>
+    {% endif %}
+</body>
+</html>
