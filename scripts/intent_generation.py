@@ -11,25 +11,12 @@ The method for finding the communities is extremely fast, for clustering 50k sen
 
 In this example, we download a large set of questions from Quora and then find similar questions in this set.
 """
-from spacy.symbols import nsubj, dobj, NOUN, VERB
+from spacy.symbols import nsubj, dobj, VERB
 import spacy
 from sentence_transformers import SentenceTransformer, util
 import os
 import csv
 import time
-
-
-def most_frequent(List):
-    counter = 0
-    num = List[0]
-
-    for i in List:
-        curr_frequency = List.count(i)
-        if(curr_frequency > counter):
-            counter = curr_frequency
-            num = i
-
-    return num
 
 
 # Model for computing sentence embeddings. We use one trained for similar questions detection
@@ -77,7 +64,7 @@ start_time = time.time()
 # min_cluster_size: Only consider cluster that have at least 25 elements
 # threshold: Consider sentence pairs with a cosine-similarity larger than threshold as similar
 clustersIds = util.community_detection(
-    corpus_embeddings, min_community_size=20, threshold=0.75)
+    corpus_embeddings, min_community_size=10, threshold=0.9)
 
 print("Clustering done after {:.2f} sec".format(time.time() - start_time))
 
@@ -88,22 +75,12 @@ for i, clusterId in enumerate(clustersIds):
         clusters[i].append(corpus_sentences[sentence_id])
 
 
-action_object_list = []
 for cluster in clusters:
     doc = nlp('\n'.join(cluster))
-    is_questions = []
-    actions = []
-    objects = []
+    action_object_list = set()
     for possible_subject in doc:
-        if possible_subject.dep == dobj and possible_subject.pos == NOUN and possible_subject.head.pos == VERB:
-            # action_object_list.add(possible_subject.head.lemma_.lower() +
-            #                        '-' + possible_subject.lemma_.lower())
-            actions.append(possible_subject.head.lemma_.lower())
-            objects.append(possible_subject.lemma_.lower())
-            
-    if len(actions) > 0 and len(actions) == len(objects):
-        action_object_list.append(most_frequent(
-            actions) + '-' + most_frequent(objects))
-print(action_object_list)
-# for i in range(len(actions)):
-#     print(actions[i], '-', objects[i])
+        if possible_subject.dep == dobj and possible_subject.head.pos == VERB:
+            action_object_list.add(possible_subject.head.lemma_.lower() +
+                                   '-' + possible_subject.lemma_.lower())
+
+    print(action_object_list)
