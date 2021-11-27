@@ -1,8 +1,7 @@
 import os
 import openai
 
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 start_sequence = "\nAI:"
 restart_sequence = "\nHuman: "
