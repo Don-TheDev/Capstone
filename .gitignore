@@ -104,11 +104,16 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.capstone
 env/
 venv/
+capstone/
 ENV/
+VENV/
+CAPSTONE/
 env.bak/
 venv.bak/
+capstone.bak/
 
 # Spyder project settings
 .spyderproject
