@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ botname }} Messages</title>
+</head>
+<body>
+    <a href="{% url 'omnichat_web:index' %}">Go Back</a>
+    <hr />
+    <br />
+    <a href="{% url 'omnichat_web:save_conversation' %}">Save Active Conversation</a>
+    <br />
+    <br />
+    <a href="{% url 'omnichat_web:clear_conversation' %}">Clear Active Conversation</a>
+    <h1>Messages</h1>
+    {% if ai_text %}
+        <ul style="list-style-type: none;">
+            {% for message in ai_text %}
+            <li><p>{{ message }}</p></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="create_completion" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="SEND">
+    </form>
+</body>
+</html>

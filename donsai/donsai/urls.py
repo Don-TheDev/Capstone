@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+# from . import views
+
+
+app_name = 'donsai'
+
 
 urlpatterns = [
-    path('omnichat_web/', include('omnichat_web.urls')),
+    # path('', views.index, name='index'),
+    # path('donsai/', views.index, name='index'),
+    # path('', include('omnichat_web.urls')),
     path('omnichat_api/', include('omnichat_api.urls')),
+    path('omnichat_web/', include('omnichat_web.urls')),
     path('admin/', admin.site.urls),
 ]

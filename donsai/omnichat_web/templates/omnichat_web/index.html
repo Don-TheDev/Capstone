@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ botname }} Main Menu</title>
+</head>
+<body>
+    <h1>Main Menu</h1>
+    {% if not server_is_running %}<br/><a href="{% url 'omnichat_web:completions' %}">Completions</a>{% endif %}
+    {% if not server_is_running %}<br/><a href="{% url 'omnichat_web:gpt_options' %}">GPT Options</a>{% endif %}
+</body>
+</html>
