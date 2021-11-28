@@ -77,7 +77,7 @@ def gpt_options(request):
     return save_gpt_model(request)
 
 
-def create_completion(request):
+def send_message(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -110,7 +110,7 @@ def create_completion(request):
 
 
 @api_view(['GET', 'POST', ])
-def create_completion_api(request):
+def send_message_api(request):
     # unicode_data = request.body.decode('utf-8')
     # logger.warn(unicode_data)
     message_data = request.data

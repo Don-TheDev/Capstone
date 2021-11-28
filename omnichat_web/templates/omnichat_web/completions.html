@@ -23,7 +23,7 @@
             {% endfor %}
         </ul>
         {% endif %}
-        <form action="create_completion" method="post">
+        <form action="send_message" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="SEND" class="button">
