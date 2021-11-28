@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ botname }} Messages</title>
+    <title>Omnichat Logs</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
 </head>
 <body>
-    <a href="{% url 'omnichat_web:index' %}">Go Back</a>
-    <hr />
-    <br />
-    <a href="{% url 'omnichat_web:save_conversation' %}">Save Active Conversation</a>
-    <br />
-    <br />
-    <a href="{% url 'omnichat_web:clear_conversation' %}">Clear Active Conversation</a>
-    <h1>Messages</h1>
-    {% if ai_text %}
-        <ul style="list-style-type: none;">
+    <h1>Logs</h1>
+    <a href="{% url 'omnichat_web:index' %}" class="button">Go Back</a>
+    <a href="{% url 'omnichat_web:save_conversation' %}" class="button">Save Active Conversation</a>
+    <a href="{% url 'omnichat_web:clear_conversation' %}" class="button">Clear Active Conversation</a>
+    <hr/>
+    <section  class="discussion">
+        {% if ai_text %}
+        <ul class="message-list">
             {% for message in ai_text %}
-            <li><p>{{ message }}</p></li>
+            <!-- class="{% cycle 'bubble sender last' 'bubble recipient last' %}" -->
+            <li ><p>{{ message }}</p></li>
             {% endfor %}
         </ul>
-    {% endif %}
-    <form action="create_completion" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="SEND">
-    </form>
+        {% endif %}
+        <form action="create_completion" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="SEND" class="button">
+        </form>
+    </section>
 </body>
 </html>

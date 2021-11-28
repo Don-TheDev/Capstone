@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ botname }} Main Menu</title>
+    <title>Omnichat Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
 </head>
 <body>
-    <h1>Main Menu</h1>
-    {% if not server_is_running %}<br/><a href="{% url 'omnichat_web:completions' %}">Completions</a>{% endif %}
-    {% if not server_is_running %}<br/><a href="{% url 'omnichat_web:gpt_options' %}">GPT Options</a>{% endif %}
+    <h1>Home</h1>
+    <hr/>
+    <a href="{% url 'omnichat_web:completions' %}" class="button">Logs</a>
+    <br/>
+    <br/>
+    <a href="{% url 'omnichat_web:gpt_options' %}" class="button">Options</a>
 </body>
 </html>

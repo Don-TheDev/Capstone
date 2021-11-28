@@ -1,0 +1,95 @@
+html {
+    font-family: "PT Sans", Georgia, serif;
+    background-color: forestgreen;
+}
+
+/* Forms */
+.message-input {
+    border-radius: 5px;
+}
+
+
+.edit-input {
+    display: block;
+    border-radius: 5px;
+}
+
+/*  Button */
+.button {
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    padding: 2px 6px 2px 6px;
+    margin: 10px;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: darkgreen;
+    color: lightgray;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* Chat Messages */
+.message-list {
+    list-style-type: none;
+    max-height: fit-content;
+    overflow: auto;
+    background-color: darkslategray;
+    border-radius: 5px;
+}
+
+
+.discussion {
+    max-width: 600px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.discussion>.bubble {
+    border-radius: 1em;
+    padding: 0.25em 0.75em;
+    margin: 0.0625em;
+    max-width: 50%;
+}
+
+.discussion>.bubble.sender {
+    align-self: flex-start;
+    background-color: cornflowerblue;
+    color: #fff;
+}
+
+.discussion>.bubble.recipient {
+    align-self: flex-end;
+    background-color: #efefef;
+}
+
+.discussion>.bubble.sender.first {
+    border-bottom-left-radius: 0.1em;
+}
+
+.discussion>.bubble.sender.last {
+    border-top-left-radius: 0.1em;
+}
+
+.discussion>.bubble.sender.middle {
+    border-bottom-left-radius: 0.1em;
+    border-top-left-radius: 0.1em;
+}
+
+.discussion>.bubble.recipient.first {
+    border-bottom-right-radius: 0.1em;
+}
+
+.discussion>.bubble.recipient.last {
+    border-top-right-radius: 0.1em;
+}
+
+.discussion>.bubble.recipient.middle {
+    border-bottom-right-radius: 0.1em;
+    border-top-right-radius: 0.1em;
+}

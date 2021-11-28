@@ -26,14 +26,32 @@ global server_thread
 
 
 class CompletionForm(forms.Form):
-    text = forms.CharField(label='',)
+    text = forms.CharField(label='', widget=forms.TextInput(
+        attrs={
+            'class': 'message-input',
+            'placeholder': 'Type here'
+        }
+    ))
+
+
+# class GPTModelForm(forms.Form):
+#     prompt = forms.CharField(label=mark_safe(
+#         'Prompt:<br/>'), widget=forms.Textarea)
+#     examples = forms.CharField(label=mark_safe(
+#         'Examples:<br/>'), widget=forms.Textarea)
 
 
 class GPTModelForm(forms.Form):
-    prompt = forms.CharField(label=mark_safe(
-        'Prompt:<br/>'), widget=forms.Textarea)
-    examples = forms.CharField(label=mark_safe(
-        'Examples:<br/>'), widget=forms.Textarea)
+    prompt = forms.CharField(label='Prompt:', widget=forms.Textarea(
+        attrs={
+            'class': 'edit-input',
+        }
+    ))
+    examples = forms.CharField(label='Examples:', widget=forms.Textarea(
+        attrs={
+            'class': 'edit-input',
+        }
+    ))
 
 
 # class CompletionCreateAPIView(CreateAPIView):

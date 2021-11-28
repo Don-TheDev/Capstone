@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Options</title>
+    <title>Omnichat Editor</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
 </head>
 <body>
-    <h1>Bot Options</h1>
-</body>
-    <a href="{% url 'omnichat_web:index' %}">Go Back</a>
-    <br />
+    <h1>Editor</h1>
+    <a href="{% url 'omnichat_web:index' %}" class="button">Go Back</a>
+    <hr/>
     <form action="save_gpt_model" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="SAVE">
+        <input type="submit" value="SAVE" class="button">
     </form>
+</body>
 </html>
