@@ -115,6 +115,11 @@ env.bak/
 venv.bak/
 capstone.bak/
 
+#Environment Info
+dev.env
+.vscode/
+launch.json
+
 # Spyder project settings
 .spyderproject
 .spyproject
