@@ -14,18 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-# from . import views
+from django.urls import include, path, re_path
+from django.views.generic.base import RedirectView
+from . import views
 
 
 app_name = 'donsai'
 
 
 urlpatterns = [
-    # path('', views.index, name='index'),
-    # path('donsai/', views.index, name='index'),
-    # path('', include('omnichat_web.urls')),
-    path('omnichat_api/', include('omnichat_api.urls')),
-    path('omnichat_web/', include('omnichat_web.urls')),
-    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('donsai/', views.index, name='index'),
+    path('donsai/omnichat/api/', include('omnichat_api.urls')),
+    path('donsai/omnichat/', include('omnichat_web.urls')),
+    path('donsai/admin/', admin.site.urls),
 ]

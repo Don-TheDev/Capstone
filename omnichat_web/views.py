@@ -5,7 +5,7 @@ import requests
 from django.utils import timezone
 from django import forms
 from django.forms.fields import CharField, DateTimeField
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .scripts import openai_script
@@ -64,7 +64,9 @@ def index(request):
 
 
 def completions(request):
-    return create_completion(request)
+    messages = openai_script.additional_text.split('\n')
+    form = CompletionForm()
+    return render(request, 'omnichat_web/completions.html', {'ai_text': messages, 'form': form})
 
 
 def options(request):
@@ -98,8 +100,7 @@ def create_completion(request):
             # logger.warn('Log_AI: ' + ai_text)
             form = CompletionForm()
             messages = openai_script.additional_text.split('\n')
-            # return HttpResponseRedirect(reverse('omnichat_web:completions', args={'ai_text': ai_text, 'form': form}))
-            return render(request, 'omnichat_web/completions.html', {'ai_text': messages, 'form': form})
+            return redirect('omnichat_web:completions')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -146,8 +147,7 @@ def save_conversation(request):
 
 def clear_conversation(request):
     openai_script.additional_text = ""
-    form = CompletionForm()
-    return render(request, 'omnichat_web/completions.html', {'form': form})
+    return redirect('omnichat_web:completions')
 
 
 def save_gpt_model(request):
