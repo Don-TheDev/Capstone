@@ -24,8 +24,12 @@ app_name = 'donsai'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('web/', views.web, name='web'),
+    path('api/', views.api, name='api'),
     path('donsai/', views.index, name='index'),
-    path('donsai/omnichat/api/', include('omnichat_api.urls')),
+    path('donsai/web/', views.web, name='web'),
+    path('donsai/api/', views.api, name='api'),
     path('donsai/omnichat/', include('omnichat_web.urls')),
+    path('donsai/omnichat/api/', include('omnichat_api.urls')),
     path('donsai/admin/', admin.site.urls),
 ]
