@@ -4,11 +4,6 @@ html {
 }
 
 /* Forms */
-.message-input {
-    border-radius: 5px;
-}
-
-
 .edit-input {
     display: block;
     border-radius: 5px;
@@ -25,6 +20,23 @@ html {
     border-radius: 5px;
 }
 
+
+.message-button {
+    background-color: lightgray;
+    color: black;
+    text-decoration: none;
+    padding: 2px 6px 2px 6px;
+    margin: 10px;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    float: left;
+}
+
+
+.message-form {
+    display: flex;
+}
+
 .button:hover {
     background-color: darkgreen;
     color: lightgray;
@@ -37,7 +49,7 @@ html {
     list-style-type: none;
     max-height: fit-content;
     overflow: auto;
-    background-color: darkslategray;
+    /* background-color: darkslategray; */
     border-radius: 5px;
 }
 
@@ -92,4 +104,144 @@ html {
 .discussion>.bubble.recipient.middle {
     border-bottom-right-radius: 0.1em;
     border-top-right-radius: 0.1em;
+}
+
+
+/* Chat containers */
+.message-input {
+        /* list-style-type: none; */
+        max-height: 48px;
+        height: fit-content;
+        width: 800px;
+        /* overflow: auto; */
+        /* background-color: darkslategray; */
+        /* display: flex; */
+        /* flex-direction: column; */
+        border-radius: 5px;
+        border-color: darkgreen;
+        border-width: 2px;
+        float: right;
+        resize: none;
+        margin: 20px;
+
+        /* overflow: hidden; */
+        /* display: block; */
+        }
+.message-list-container {
+        /* list-style-type: none; */
+        height: 500px;
+        width: 800px;
+        overflow: auto;
+        padding: 15px;
+        /* background-color: darkslategray; */
+        display: flex;
+        flex-direction: column-reverse;
+        border-radius: 5px;
+        border-color: darkgreen;
+        border-width: 2px;
+        float: right;
+        align-items: flex-end;
+        /* vertical-align: bottom; */
+        
+}
+
+.message-container {
+    border: 2px solid #dedede;
+    max-width: 600px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    align-self: flex-start;
+    margin-right: 20px;
+    vertical-align: bottom;
+}
+
+.right {
+    align-self: flex-end;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.message-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Style images */
+.message-container img {
+    float: left;
+    width: 60px;
+    height: 60px;
+    /* width: 100%; */
+    /* padding-top: 100%; */
+    margin-right: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Style the right image */
+.message-container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.message-text {
+    display: inline;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.cropped {
+    width: 50px;
+    /* width of container */
+    height: 50px;
+    /* height of container */
+    overflow: hidden;
+    border: 5px solid black;
+}
+
+.cropped img {
+    /* margin: -10px 0px 0px -180px; */
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    /* padding-top: 100%; */
+    margin-right: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Style the right image */
+.cropped img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+/* Clear floats */
+.cropped::after {
+    content: "";
+    clear: both;
+    display: table;
 }

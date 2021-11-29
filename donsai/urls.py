@@ -14,9 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path, re_path
-from django.views.generic.base import RedirectView
+from django.urls import include, path
 from . import views
+# from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+# from django.conf import settings
 
 
 app_name = 'donsai'
@@ -29,7 +31,13 @@ urlpatterns = [
     path('donsai/', views.index, name='index'),
     path('donsai/web/', views.web, name='web'),
     path('donsai/api/', views.api, name='api'),
+    path('omnichat/', views.web, name='web'),
+    path('omnichat/api', views.api, name='api'),
     path('donsai/omnichat/', include('omnichat_web.urls')),
     path('donsai/omnichat/api/', include('omnichat_api.urls')),
     path('donsai/admin/', admin.site.urls),
 ]
+
+# urlpatterns += patterns('',
+#                         url(r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),)
+# urlpatterns += staticfiles_urlpatterns()

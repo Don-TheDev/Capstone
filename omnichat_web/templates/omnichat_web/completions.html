@@ -14,20 +14,33 @@
     <a href="{% url 'omnichat_web:save_conversation' %}" class="button">Save Active Conversation</a>
     <a href="{% url 'omnichat_web:clear_conversation' %}" class="button">Clear Active Conversation</a>
     <hr/>
-    <section  class="discussion">
+    <section  class="message-list-container">
         {% if ai_text %}
-        <ul class="message-list">
+        <!-- <ul class="message-list"> -->
             {% for message in ai_text %}
             <!-- class="{% cycle 'bubble sender last' 'bubble recipient last' %}" -->
-            <li ><p>{{ message }}</p></li>
+            <div class="{% cycle 'message-container' 'message-container darker right' %}">
+                <!-- <div class="cropped"> -->
+                    <img src="{% static 'omnichat_web/images/yinyangtree.jpg' %}" alt="Avatar" class="{% cycle '' 'right' %}">
+                <!-- </div> -->
+                <p class="message-text">{{ message }}</p>
+                <br>
+                <span class="{% cycle 'time-right' 'time-left' %}">11:01</span>
+            </div>
+            {% empty %}
+            <!-- <li ><p>{{ message }}</p></li> -->
             {% endfor %}
-        </ul>
+        <!-- </ul> -->
         {% endif %}
-        <form action="send_message" method="post">
+    </section>
+    <section class="message-input">
+        <form action="send_message" method="post" class="message-form">
+            <input type="submit" value="SEND" class="message-button">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="SEND" class="button">
         </form>
     </section>
+    <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
+    <script src="{% static 'omnichat_web/scripts/completions.js' %}"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <h1>Editor</h1>
     <a href="{% url 'omnichat_web:index' %}" class="button">Go Back</a>
     <hr/>
-    <form action="save_gpt_model" method="post">
+    <form action="save_model" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="SAVE" class="button">

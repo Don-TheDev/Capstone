@@ -25,6 +25,21 @@ def create_completion():
     )
 
 
+def create_completion(prompt, temperature=0.9, max_tokens=150, top_p=1,
+                      frequency_penalty=0, presence_penalty=0.6,
+                      stop=["\n", " Human:", " AI:"]):
+    return openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        top_p=top_p,
+        frequency_penalty=frequency_penalty,
+        presence_penalty=presence_penalty,
+        stop=stop
+    )
+
+
 def create_completion_with_message(text):
     return openai.Completion.create(
         engine="davinci",
