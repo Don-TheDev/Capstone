@@ -44,8 +44,8 @@ ALLOWED_HOSTS = os.getenv(
 INSTALLED_APPS = [
     'omnichat_api.apps.OmnichatApiConfig',
     'omnichat_web.apps.OmnichatWebConfig',
-    'dajaxice',
-    'dajax',
+    # 'dajaxice',
+    # 'dajax',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -199,10 +199,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages'
 )
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'dajaxice.finders.DajaxiceFinder',
-)
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'dajaxice.finders.DajaxiceFinder',
+# )
 
-DAJAXICE_MEDIA_PREFIX = 'dajaxice'
+# DAJAXICE_MEDIA_PREFIX = 'dajaxice'
