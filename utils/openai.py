@@ -1,3 +1,4 @@
+# import logging
 import os
 import openai
 
@@ -28,15 +29,57 @@ def create_completion():
 def create_completion(prompt, temperature=0.9, max_tokens=150, top_p=1,
                       frequency_penalty=0, presence_penalty=0.6,
                       stop=["\n", " Human:", " AI:"]):
+    # return openai.Completion.create(
+    #     engine="davinci",
+    #     prompt=prompt,
+    #     temperature=temperature,
+    #     max_tokens=max_tokens,
+    #     top_p=top_p,
+    #     frequency_penalty=frequency_penalty,
+    #     presence_penalty=presence_penalty,
+    #     stop=stop
+    # )
+
+    sensitivity_code = '2'
+    attempts = 0
+    response = ''
+    while not sensitivity_code == '0' and attempts < 2:
+        response = openai.Completion.create(
+            engine="curie",
+            prompt=prompt,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=top_p,
+            frequency_penalty=frequency_penalty,
+            presence_penalty=presence_penalty,
+            stop=stop
+        )
+        response_text = response.get('choices')[0].get('text')
+        # logging.warn(response)
+        # logging.warn(prompt)
+        # logging.warn(response_text)
+        sensitivity_code = filter_content(response_text) \
+            .get('choices')[0].get('text')
+        attempts += 1
+    if sensitivity_code == '2':
+        response = {'choices': [{'text': " I refuse to discuss this."}]}
+    elif sensitivity_code == '1':
+        response = {'choices': [
+            {'text': " I don't like to talk about sensitive topics."}]}
+    return response
+
+
+def filter_content(prompt, temperature=0, max_tokens=1, top_p=1,
+                   frequency_penalty=0, presence_penalty=0, logprobs=10):
     return openai.Completion.create(
-        engine="davinci",
-        prompt=prompt,
+        engine="content-filter-alpha",
+        prompt="<|endoftext|>" + prompt + "\n--\nLabel:",
         temperature=temperature,
         max_tokens=max_tokens,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
         presence_penalty=presence_penalty,
-        stop=stop
+        logprobs=logprobs
     )
 
 

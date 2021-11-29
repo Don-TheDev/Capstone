@@ -1,30 +1,33 @@
+import json
 import logging
 import os
-import json
+
 import requests
-from django.utils import timezone
-from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.utils import timezone
+from django.utils.safestring import mark_safe
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from utils import openai
 
 import omnichat_web
 from omnichat_web.models import AiModel
-from utils import openai
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.utils.safestring import mark_safe
+
 from . import forms
 
 logger = logging.getLogger(__name__)
-global server_is_running
-server_is_running = False
+# global server_is_running
+# server_is_running = False
 username = "Human"
 ai_name = "Marilyn Monroe"
 ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
-openai.prompt = ai_model.prompt
-openai.examples = ai_model.examples
-rasa_rest_url = 'http://localhost:5005/webhooks/rest/webhook'
-global server_thread
+# openai.prompt = ai_model.prompt
+# openai.examples = ai_model.examples
+# rasa_rest_url = 'http://localhost:5005/webhooks/rest/webhook'
+# global server_thread
+current_conversation = ''
 
 # Create your views here.
 
@@ -35,8 +38,8 @@ def index(request):
 
 def completions(request):
     messages = []
-    if openai.additional_text:
-        messages = openai.additional_text.strip().split('\n')
+    if current_conversation:
+        messages = current_conversation.strip().split('\n')
         messages.reverse()
     form = forms.CompletionForm()
     return render(request, 'omnichat_web/completions.html', {'ai_text': messages, 'form': form})
@@ -47,12 +50,14 @@ def options(request):
 
 
 def gpt_options(request):
+    ai_model = AiModel.objects.get(name=ai_name)
     form = forms.GPTModelForm(initial={
-        'prompt': openai.prompt, 'examples': openai.examples})
+        'prompt': ai_model.prompt, 'examples': ai_model.examples})
     return render(request, 'omnichat_web/gpt_options.html', {'form': form})
 
 
 def send_message(request):
+    global current_conversation
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -66,24 +71,26 @@ def send_message(request):
             text = form.cleaned_data.get('text')
             # logger.warn('Log_Human' +
             #             ": " + text)
-            openai.additional_text += '\nHuman: ' + text + '\nAI: '
+            current_conversation += '\nHuman: ' + text + '\nAI:'
             # ai_response = openai.create_completion_with_full()
             ai_model = AiModel.objects.get(name=ai_name)
             prompt = ai_model.prompt + '\n\n' + ai_model.examples + '\n' \
-                + openai.additional_text
+                + current_conversation
+            # logger.warn("prompt: " + prompt)
             ai_response = openai.create_completion(prompt)
+            # logger.warn("ai_response: " + str(ai_response))
             ai_text = ai_response.get('choices')[0].get('text')
-            openai.additional_text += ai_text
+            current_conversation += ai_text
             # logger.warn('Log_AI: ' + ai_text)
-            logger.warn(prompt + ai_text)
+            # logger.warn(prompt + ai_text)
             return redirect('omnichat_web:completions')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = forms.CompletionForm()
         messages = []
-        if openai.additional_text:
-            messages = openai.additional_text.split('\n')
+        if current_conversation:
+            messages = current_conversation.split('\n')
             messages.reverse()
     return render(request, 'omnichat_web/completions.html', {'ai_text': messages, 'form': form})
 
@@ -93,14 +100,18 @@ def send_message_to_ai():
 
 
 def save_conversation(request):
-    if openai.additional_text.strip():
-        openai.examples += '\n' + openai.additional_text
-    openai.additional_text = ""
+    global current_conversation
+    ai_model = AiModel.objects.get(name=ai_name)
+    if current_conversation.strip():
+        ai_model.examples += current_conversation
+        ai_model.save()
+    current_conversation = ""
     return redirect('omnichat_web:completions')
 
 
 def clear_conversation(request):
-    openai.additional_text = ""
+    global current_conversation
+    current_conversation = ""
     return redirect('omnichat_web:completions')
 
 
@@ -111,30 +122,13 @@ def save_model(request):
         # create a form instance and populate it with data from the request:
         form = forms.GPTModelForm(request.POST)
         # check whether it's valid:
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
             ai_model.prompt = form.cleaned_data.get('prompt')
             ai_model.examples = form.cleaned_data.get('examples')
-            # logger.warn("AI PK: " + str(ai_model.pk))
-            # AiModel.objects.filter(pk=ai_model.pk) \
-            #     .update(prompt=prompt, examples=examples)
             ai_model.save()
-            openai.prompt = ai_model.prompt
-            openai.examples = ai_model.examples
-            # logger.warn('Log_Human' +
-            #             ": " + text)
-            # logger.warn('Full_Text: ' + openai.prompt +
-            #             openai.additional_text)
-            # logger.warn('Log_AI: ' + ai_text)
-            # return HttpResponseRedirect(reverse('omnichat_web:completions', args={'ai_text': ai_text, 'form': form}))
             return redirect('omnichat_web:gpt_options')
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = forms.GPTModelForm(initial={
-            'prompt': openai.prompt, 'examples': openai.examples})
+            'prompt': ai_model.prompt, 'examples': ai_model.examples})
 
     return render(request, 'omnichat_web/gpt_options.html', {'form': form})
