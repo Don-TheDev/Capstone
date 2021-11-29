@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 # server_is_running = False
 username = "Human"
 ai_name = "Marilyn Monroe"
-ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
+# ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
 # openai.prompt = ai_model.prompt
 # openai.examples = ai_model.examples
 # rasa_rest_url = 'http://localhost:5005/webhooks/rest/webhook'

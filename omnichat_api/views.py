@@ -20,7 +20,7 @@ def send_message(request):
     message_data = request.data
     current_conversation += '\nHuman: ' + \
         message_data.get('message') + '\nAI:'
-    ai_model = AiModel.objects.get(name=ai_name)
+    ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
     prompt = ai_model.prompt + '\n\n' + ai_model.examples \
         + current_conversation
     ai_response = openai.create_completion(prompt)
