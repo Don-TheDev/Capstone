@@ -50,7 +50,7 @@ def options(request):
 
 
 def gpt_options(request):
-    ai_model = AiModel.objects.get(name=ai_name)
+    ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
     form = forms.GPTModelForm(initial={
         'prompt': ai_model.prompt, 'examples': ai_model.examples})
     return render(request, 'omnichat_web/gpt_options.html', {'form': form})
@@ -73,7 +73,7 @@ def send_message(request):
             #             ": " + text)
             current_conversation += '\nHuman: ' + text + '\nAI:'
             # ai_response = openai.create_completion_with_full()
-            ai_model = AiModel.objects.get(name=ai_name)
+            ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
             prompt = ai_model.prompt + '\n\n' + ai_model.examples + '\n' \
                 + current_conversation
             # logger.warn("prompt: " + prompt)
@@ -101,7 +101,7 @@ def send_message_to_ai():
 
 def save_conversation(request):
     global current_conversation
-    ai_model = AiModel.objects.get(name=ai_name)
+    ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
     if current_conversation.strip():
         ai_model.examples += current_conversation
         ai_model.save()
