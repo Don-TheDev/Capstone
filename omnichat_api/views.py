@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from utils import openai
+from utils import util_openai, util_nlpcloud
 from omnichat_web.models import AiModel
 import logging
 
@@ -18,14 +18,16 @@ current_conversation = ''
 def send_message(request):
     global current_conversation
     message_data = request.data
-    current_conversation += '\nHuman: ' + \
-        message_data.get('message') + '\nAI:'
+    current_conversation = '\nHuman: ' + \
+        message_data.get('message') + '\ndonsai:'
     ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
     prompt = ai_model.prompt + '\n\n' + ai_model.examples \
         + current_conversation
-    ai_response = openai.create_completion(prompt)
+    ai_response = util_openai.create_completion(prompt)
     ai_text = ai_response.get('choices')[0].get('text').strip()
-    current_conversation += ai_text
+    ai_response = util_nlpcloud.generate(prompt)
+    ai_text = ai_response.get('generated_text').strip()
+    current_conversation += ' ' + ai_text + '\n###'
     if message_data.get('learn'):
         ai_model.examples += current_conversation
         current_conversation = ''

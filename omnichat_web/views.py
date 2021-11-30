@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from utils import openai
+from utils import util_openai, util_nlpcloud
 
 import omnichat_web
 from omnichat_web.models import AiModel
@@ -23,8 +23,8 @@ logger = logging.getLogger(__name__)
 username = "Human"
 ai_name = "Marilyn Monroe"
 # ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
-# openai.prompt = ai_model.prompt
-# openai.examples = ai_model.examples
+# util_openai.prompt = ai_model.prompt
+# util_openai.examples = ai_model.examples
 # rasa_rest_url = 'http://localhost:5005/webhooks/rest/webhook'
 # global server_thread
 current_conversation = ''
@@ -39,7 +39,9 @@ def index(request):
 def completions(request):
     messages = []
     if current_conversation:
-        messages = current_conversation.strip().split('\n')
+        cleaned_conversation = current_conversation.replace('\n###', '')
+        cleaned_conversation = cleaned_conversation.strip()
+        messages = cleaned_conversation.split('\n')
         messages.reverse()
     form = forms.CompletionForm()
     return render(request, 'omnichat_web/completions.html', {'ai_text': messages, 'form': form})
@@ -71,18 +73,21 @@ def send_message(request):
             text = form.cleaned_data.get('text')
             # logger.warn('Log_Human' +
             #             ": " + text)
-            current_conversation += '\nHuman: ' + text + '\nAI:'
-            # ai_response = openai.create_completion_with_full()
+            current_conversation += '\nHuman: ' + text + '\ndonsai:'
+            # ai_response = util_openai.create_completion_with_full()
             ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
             prompt = ai_model.prompt + '\n\n' + ai_model.examples + '\n' \
                 + current_conversation
             # logger.warn("prompt: " + prompt)
-            ai_response = openai.create_completion(prompt)
-            # logger.warn("ai_response: " + str(ai_response))
-            ai_text = ai_response.get('choices')[0].get('text')
-            current_conversation += ai_text
+            # ai_response = util_openai.create_completion(prompt)
+            ai_response = util_nlpcloud.generate(prompt)
+            # logger.warn("ai_response: " + ai_response)
+            logger.warn("nb_generated_tokens: " + str(ai_response.get('nb_generated_tokens')))
+            # ai_text = ai_response.get('choices')[0].get('text')
+            ai_text = ai_response.get('generated_text')
+            current_conversation += ai_text + '###'
             # logger.warn('Log_AI: ' + ai_text)
-            # logger.warn(prompt + ai_text)
+            logger.warn(prompt + ai_text)
             return redirect('omnichat_web:completions')
 
     # if a GET (or any other method) we'll create a blank form
