@@ -73,9 +73,9 @@ def send_message(request):
             text = form.cleaned_data.get('text')
             # logger.warn('Log_Human' +
             #             ": " + text)
-            current_conversation += '\nHuman: ' + text + '\ndonsai:'
             # ai_response = util_openai.create_completion_with_full()
             ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
+            current_conversation += f'\n{username}: ' + text + f'\n{ai_model.name}:'
             prompt = ai_model.prompt + '\n\n' + ai_model.examples + current_conversation
             # logger.warn("prompt: " + prompt)
             # ai_response = util_openai.create_completion(prompt)
