@@ -76,8 +76,7 @@ def send_message(request):
             current_conversation += '\nHuman: ' + text + '\ndonsai:'
             # ai_response = util_openai.create_completion_with_full()
             ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
-            prompt = ai_model.prompt + '\n\n' + ai_model.examples + '\n' \
-                + current_conversation
+            prompt = ai_model.prompt + '\n\n' + ai_model.examples + current_conversation
             # logger.warn("prompt: " + prompt)
             # ai_response = util_openai.create_completion(prompt)
             ai_response = util_nlpcloud.generate(prompt)
@@ -87,7 +86,7 @@ def send_message(request):
             ai_text = ai_response.get('generated_text')
             current_conversation += ai_text + '###'
             # logger.warn('Log_AI: ' + ai_text)
-            logger.warn(prompt + ai_text)
+            logger.warn(prompt + ai_text + '###')
             return redirect('omnichat_web:completions')
 
     # if a GET (or any other method) we'll create a blank form
