@@ -7,10 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils import timezone
-from django.utils.safestring import mark_safe
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from utils import util_openai, util_nlpcloud
+from utils import util_nlpcloud
 
 import omnichat_web
 from omnichat_web.models import AiModel
@@ -20,7 +17,7 @@ from . import forms
 logger = logging.getLogger(__name__)
 # global server_is_running
 # server_is_running = False
-username = "Human"
+user_name = "Human"
 ai_name = "Marilyn Monroe"
 # ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
 # util_openai.prompt = ai_model.prompt
@@ -75,7 +72,7 @@ def send_message(request):
             #             ": " + text)
             # ai_response = util_openai.create_completion_with_full()
             ai_model = AiModel.objects.get_or_create(name=ai_name)[0]
-            current_conversation += f'\n{username}: ' + text + f'\n{ai_model.name}:'
+            current_conversation += f'\n{user_name}: ' + text + f'\n{ai_model.name}:'
             prompt = ai_model.prompt + '\n\n' + ai_model.examples + current_conversation
             # logger.warn("prompt: " + prompt)
             # ai_response = util_openai.create_completion(prompt)
