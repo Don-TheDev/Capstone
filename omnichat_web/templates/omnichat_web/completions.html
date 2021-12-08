@@ -26,6 +26,13 @@
         <div class="w3-margin-top">
             <div class="w3-sidebar w3-bar-block w3-theme-d2 w3-padding w3-round-large" style="width:25%">
                 <!-- <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Go Back</a> -->
+                <div class="w3-container w3-card w3-padding w3-margin w3-theme-light w3-round-large">
+                    <h4 class="w3-center"><strong>WARNING</strong></h4>
+                    <p>Your conversations are <strong>not private</strong>, even if you do not save them.
+                        Please do not share any sensitive or confidential information.
+                        By using this service, <strong>you acknowledge</strong> the statement above,
+                        and you assume <strong>full responsibility</strong> for your own actions and their consequences.</p>
+                </div>
                 <a href="{% url 'omnichat_web:save_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Save Active Conversation</a>
                 <a href="{% url 'omnichat_web:clear_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Clear Active Conversation</a>
             </div>
