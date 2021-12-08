@@ -24,14 +24,14 @@
             <!-- </div> -->
         <!-- </div> -->
         <div class="w3-margin-top">
-            <div class="w3-sidebar w3-bar-block w3-theme-d2 w3-padding" style="width:25%">
+            <div class="w3-sidebar w3-bar-block w3-theme-d2 w3-padding w3-round-large" style="width:25%">
                 <!-- <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Go Back</a> -->
                 <a href="{% url 'omnichat_web:save_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Save Active Conversation</a>
                 <a href="{% url 'omnichat_web:clear_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Clear Active Conversation</a>
             </div>
             <!-- <hr/> -->
             <div class="w3-panel" style="margin-left:25%">
-                <div class="w3-ul message-list-container w3-theme-d2 w3-padding-large w3-margin">
+                <div class="w3-ul message-list-container w3-theme-d2 w3-padding-large w3-margin w3-round-large">
                     {% if ai_text %}
                     <!-- <ul class="message-list"> -->
                         {% for message in ai_text %}
