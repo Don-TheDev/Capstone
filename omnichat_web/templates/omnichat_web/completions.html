@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="w3-theme">
+<html lang="en" class="w3-theme w3-mobile">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 </head>
 <body>
     <div>
-        <div class="w3-bar w3-theme-dark w3-card w3-padding-16">
+        <div class="w3-bar w3-theme-dark w3-card w3-padding-16 w3-mobile">
             <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Home</a>
             <a href="{% url 'omnichat_web:completions' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left w3-theme">Messages</a>
             <a href="{% url 'omnichat_web:gpt_options' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Options</a>
@@ -23,10 +23,10 @@
                 <!-- <h1>Logs</h1> -->
             <!-- </div> -->
         <!-- </div> -->
-        <div class="w3-margin-top">
+        <div class="w3-margin-top w3-mobile">
             <div class="w3-sidebar w3-bar-block w3-theme-d2 w3-padding w3-round-large" style="width:25%">
                 <!-- <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Go Back</a> -->
-                <div class="w3-container w3-card w3-padding w3-margin w3-theme-light w3-round-large">
+                <div class="w3-container w3-card w3-padding w3-margin w3-theme-light w3-round-large w3-mobile">
                     <h4 class="w3-center"><strong>WARNING</strong></h4>
                     <p>Your conversations are <strong>not private</strong>, even if you do not save them.
                         Please do not share any sensitive or confidential information.
@@ -37,13 +37,13 @@
                 <a href="{% url 'omnichat_web:clear_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Clear Active Conversation</a>
             </div>
             <!-- <hr/> -->
-            <div class="w3-panel" style="margin-left:25%">
-                <div class="w3-ul message-list-container w3-theme-d2 w3-padding-large w3-margin w3-round-large">
+            <div class="w3-panel w3-mobile" style="margin-left:25%">
+                <div class="w3-ul message-list-container w3-theme-d2 w3-padding-large w3-margin w3-round-large w3-mobile">
                     {% if ai_text %}
                     <!-- <ul class="message-list"> -->
                         {% for message in ai_text %}
                         <!-- class="{% cycle 'bubble sender last' 'bubble recipient last' %}" -->
-                        <div class="w3-container {% cycle 'message-container w3-theme-l4' 'message-container darker w3-theme-l3 right' %}">
+                        <div class="w3-container {% cycle 'message-container w3-theme-l4' 'message-container darker w3-theme-l3 right' %} w3-mobile">
                             <!-- <div class="cropped"> -->
                                 <img src="{% static 'omnichat_web/images/yinyangtree.jpg' %}" alt="Avatar" class="{% cycle '' 'right' %}">
                                 <!-- </div> -->
@@ -57,7 +57,7 @@
                             <!-- </ul> -->
                     {% endif %}
                 </div>
-                <div class="message-input w3-padding-xlarge w3-margin">
+                <div class="message-input w3-padding-xlarge w3-margin w3-mobile">
                     <form id="id_message_form" action="send_message" method="post" class="flex">
                         {% csrf_token %}
                         {{ form }}
