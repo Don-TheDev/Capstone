@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  class="w3-theme">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +7,24 @@
     <title>Omnichat Home</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/w3.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css"> 
 </head>
 <body>
-    <h1>Home</h1>
-    <hr/>
-    <a href="{% url 'omnichat_web:completions' %}" class="button">Logs</a>
-    <br/>
-    <br/>
-    <a href="{% url 'omnichat_web:gpt_options' %}" class="button">Options</a>
+    <div>
+         <div class="w3-bar w3-theme-dark w3-card w3-padding-16">
+            <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left w3-theme">Home</a>
+            <a href="{% url 'omnichat_web:completions' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Messages</a>
+            <a href="{% url 'omnichat_web:gpt_options' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Options</a>
+        </div> 
+        <div class="w3-container w3-card w3-theme-d4 w3-margin w3-round-xlarge">
+            <div class="w3-container w3-center">
+                <h1 class="">donsai</h1>
+            </div>
+            <div class="w3-container">
+                <p>This is an open-ended conversational agent that uses machine learning and text generation.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

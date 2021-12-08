@@ -9,6 +9,12 @@ html {
     border-radius: 5px;
 }
 
+.options-submit-button {
+    height: fit-content;
+    width: auto;
+    align-self: flex-end;
+}
+
 /*  Button */
 .button {
     background-color: lightgray;
@@ -33,7 +39,7 @@ html {
 }
 
 
-.message-form {
+.flex {
     display: flex;
 }
 
@@ -132,8 +138,8 @@ html {
         height: 500px;
         width: 800px;
         overflow: auto;
-        padding: 15px;
-        /* background-color: darkslategray; */
+        /* padding: 15px; */
+        background-color: darkslategray;
         display: flex;
         flex-direction: column-reverse;
         border-radius: 5px;
@@ -155,6 +161,11 @@ html {
     align-self: flex-start;
     margin-right: 20px;
     vertical-align: bottom;
+}
+
+.messages-container {
+    display: inline;
+    max-width: fit-content;
 }
 
 .right {

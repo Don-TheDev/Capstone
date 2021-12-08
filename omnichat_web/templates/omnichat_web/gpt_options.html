@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="w3-theme">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +7,34 @@
     <title>Omnichat Editor</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/w3.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Editor</h1>
-    <a href="{% url 'omnichat_web:index' %}" class="button">Go Back</a>
-    <hr/>
-    <form action="save_model" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="SAVE" class="button">
-    </form>
+    <div>
+        <div class="w3-bar w3-theme-dark w3-card w3-padding-16">
+            <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Home</a>
+            <a href="{% url 'omnichat_web:completions' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Messages</a>
+            <a href="{% url 'omnichat_web:gpt_options' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left w3-theme">Options</a>
+        </div> 
+        <!-- <div class="w3-container w3-theme w3-card w3-padding-large"> -->
+            <!-- <h1>Editor</h1> -->
+            <!-- <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Go Back</a> -->
+        <!-- </div> -->
+        <!-- <hr/> -->
+        <div class="w3-container w3-padding-large w3-margin">
+            <form action="save_model" method="post" class="flex">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br/>
+                <!-- <input type="submit" value="SAVE" class="w3-btn w3-large w3-round-large w3-theme-action w3-ripple"> -->
+                <button type="submit" class="options-submit-button w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-padding w3-margin">
+                    <p>SAVE</p>
+                    <i class="fa fa-arrow-right w3-xlarge"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

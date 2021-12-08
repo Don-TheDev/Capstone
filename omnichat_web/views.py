@@ -67,7 +67,7 @@ def send_message(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            text = form.cleaned_data.get('text')
+            text = form.cleaned_data.get('message_input')
             # logger.warn('Log_Human' +
             #             ": " + text)
             # ai_response = util_openai.create_completion_with_full()

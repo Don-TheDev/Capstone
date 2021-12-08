@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="w3-theme">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,40 +7,64 @@
     <title>Omnichat Logs</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'omnichat_web/w3.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Logs</h1>
-    <a href="{% url 'omnichat_web:index' %}" class="button">Go Back</a>
-    <a href="{% url 'omnichat_web:save_conversation' %}" class="button">Save Active Conversation</a>
-    <a href="{% url 'omnichat_web:clear_conversation' %}" class="button">Clear Active Conversation</a>
-    <hr/>
-    <section  class="message-list-container">
-        {% if ai_text %}
-        <!-- <ul class="message-list"> -->
-            {% for message in ai_text %}
-            <!-- class="{% cycle 'bubble sender last' 'bubble recipient last' %}" -->
-            <div class="{% cycle 'message-container' 'message-container darker right' %}">
-                <!-- <div class="cropped"> -->
-                    <img src="{% static 'omnichat_web/images/yinyangtree.jpg' %}" alt="Avatar" class="{% cycle '' 'right' %}">
-                <!-- </div> -->
-                <p class="message-text">{{ message }}</p>
-                <br>
-                <span class="{% cycle 'time-right' 'time-left' %}">11:01</span>
+    <div>
+        <div class="w3-bar w3-theme-dark w3-card w3-padding-16">
+            <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Home</a>
+            <a href="{% url 'omnichat_web:completions' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left w3-theme">Messages</a>
+            <a href="{% url 'omnichat_web:gpt_options' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top w3-margin-left">Options</a>
+        </div> 
+        <!-- <div class="w3-display-container w3-theme w3-card w3-padding-large"> -->
+            <!-- <div> -->
+                <!-- <h1>Logs</h1> -->
+            <!-- </div> -->
+        <!-- </div> -->
+        <div class="w3-margin-top">
+            <div class="w3-sidebar w3-bar-block w3-theme-d2 w3-padding" style="width:25%">
+                <!-- <a href="{% url 'omnichat_web:index' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Go Back</a> -->
+                <a href="{% url 'omnichat_web:save_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Save Active Conversation</a>
+                <a href="{% url 'omnichat_web:clear_conversation' %}" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-margin-top">Clear Active Conversation</a>
             </div>
-            {% empty %}
-            <!-- <li ><p>{{ message }}</p></li> -->
-            {% endfor %}
-        <!-- </ul> -->
-        {% endif %}
-    </section>
-    <section class="message-input">
-        <form action="send_message" method="post" class="message-form">
-            <input type="submit" value="SEND" class="message-button">
-            {% csrf_token %}
-            {{ form }}
-        </form>
-    </section>
+            <!-- <hr/> -->
+            <div class="w3-panel" style="margin-left:25%">
+                <div class="w3-ul message-list-container w3-theme-d2 w3-padding-large w3-margin">
+                    {% if ai_text %}
+                    <!-- <ul class="message-list"> -->
+                        {% for message in ai_text %}
+                        <!-- class="{% cycle 'bubble sender last' 'bubble recipient last' %}" -->
+                        <div class="w3-container {% cycle 'message-container w3-theme-l4' 'message-container darker w3-theme-l3 right' %}">
+                            <!-- <div class="cropped"> -->
+                                <img src="{% static 'omnichat_web/images/yinyangtree.jpg' %}" alt="Avatar" class="{% cycle '' 'right' %}">
+                                <!-- </div> -->
+                                <p class="message-text">{{ message }}</p>
+                                <!-- <br> -->
+                                <!-- <span class="{% cycle 'time-right' 'time-left' %}">11:01</span> -->
+                            </div>
+                            {% empty %}
+                            <!-- <li ><p>{{ message }}</p></li> -->
+                        {% endfor %}
+                            <!-- </ul> -->
+                    {% endif %}
+                </div>
+                <div class="message-input w3-padding-xlarge w3-margin">
+                    <form id="message_form" action="send_message" method="post" class="flex">
+                        {% csrf_token %}
+                        {{ form }}
+                        <!-- <input type="submit" value="SEND" class="w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-section"> -->
+                        <button id="id_message_submit" type="submit" class="w3-bar-item w3-btn w3-large w3-round-xlarge w3-theme-action w3-ripple w3-section">
+                            <i class="fa fa-arrow-right w3-xlarge"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script> -->
-    <script src="{% static 'omnichat_web/scripts/completions.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'omnichat_web/scripts/completions.js' %}"></script>
 </body>
 </html>
