@@ -25,38 +25,52 @@
 //   });
 // });
 
-// function opposite() {
-//   var data = JSON.parse("{{data|escapejs}}");
-//   var input = document.getElementById("input").value;
-//   var result = document.getElementById("result");
-//   var flag = 1;
-//   for (var x in data) {
-//     if (input.toLowerCase() == data[x][0].toLowerCase()) {
-//       result.innerHTML = data[x][1];
-//       flag = 0;
-//     } else if (input.toLowerCase() == data[x][1].toLowerCase()) {
-//       result.innerHTML = data[x][0];
-//       flag = 0;
-//     }
-//   }
-//   if (flag) {
-//     result.innerHTML = "No results found";
+// function refresh_messages() {
+//   console.log("Refreshing messages");
+//   $.get("logs.html", function (data, status) {
+//     alert("Data: " + data + "\nStatus: " + status);
+//   });
+// var data = JSON.parse("{{data|escapejs}}");
+// var input = document.getElementById("input").value;
+// var result = document.getElementById("result");
+// var flag = 1;
+// for (var x in data) {
+//   if (input.toLowerCase() == data[x][0].toLowerCase()) {
+//     result.innerHTML = data[x][1];
+//     flag = 0;
+//   } else if (input.toLowerCase() == data[x][1].toLowerCase()) {
+//     result.innerHTML = data[x][0];
+//     flag = 0;
 //   }
 // }
+// if (flag) {
+//   result.innerHTML = "No results found";
+// }
+// }
+
+// $("id_message_submit").click(refresh_messages);
 
 function submitOnEnter(event) {
   // if (event.which === 13 && !event.shiftKey) {
   if (event.which === 13) {
+    console.log("Enter pressed");
     // event.target.form.dispatchEvent(new Event("submit", { cancelable: true }));
     document.getElementById("id_message_submit").click();
     event.preventDefault(); // Prevents the addition of a new line in the text field (not needed in a lot of cases)
     // event.target.value = "";
-    location.reload();
+    // location.reload();
   }
 }
 
 messageInput = document.getElementById("id_message_input");
 messageInput.addEventListener("keypress", submitOnEnter);
+
+// document
+//   .getElementById("id_message_form")
+//   .addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     // console.log("form submitted");
+//   });
 
 messageInput.focus();
 messageInput.select();
